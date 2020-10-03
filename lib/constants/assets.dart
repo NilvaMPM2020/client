@@ -6,21 +6,20 @@ class Assets {
   static final String docupClinicIcon = '';
   static final String panelListIcon = 'assets/panelMenu.svg';
   static final String searchIcon = 'assets/search.svg';
-  static final String onCallMedicalIcon = "assets/onCallIcon.svg";
   static final String userLoginIcon = "assets/team.svg";
   static final String companyLoginIcon = "assets/hospital.svg";
-  static final String clinicLoginIcon = "assets/doctor.svg";
-  static final String homeBackground = 'assets/backgroundHome.png';
-  static final String doctorAvatar = 'assets/doctorAvatar.svg';
-  static final String calendarCheck = 'assets/calendarCheck.svg';
-  static final String clinicPanel = 'assets/clinicPanel.svg';
-  static final String emptyAvatar = 'assets/avatar.png';
-  static final String logoRectangle = 'assets/logoRec.png';
-  static final String logoCircle = 'assets/logoCircle.png';
-  static final String logoTransparent = 'assets/logoTransparent.png';
-  static final String profileIcon = 'assets/profileIcon.svg';
-  static final String servicesIcon = 'assets/servicesIcon.svg';
-  static final String panelIcon = 'assets/panelIcon.svg';
+
+  static final String homeIcon = "assets/home.svg";
+  static final String lawIcon = "assets/law.svg";
+  static final String dealIcon = "assets/deal.svg";
+  static final String menuIcon = "assets/menu.svg";
+
+  static final String addDealIcon = "assets/add_deal.svg";
+  static final String dealReqIcon = "assets/deal_req.svg";
+  static final String mameleLogo = "assets/mamele_logo.png";
+
+
+
 
 //  static String docupIcon = docupPatientIcon;
 //
