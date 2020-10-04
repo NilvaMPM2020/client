@@ -1,3 +1,4 @@
+import 'package:asoude/screen/client/judge/JudgeItem.dart';
 import 'package:flutter/material.dart';
 
 class JudgePage extends StatelessWidget {
@@ -6,7 +7,7 @@ class JudgePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        child: Container(),
+        child: JudgeItem(),
       ),
     );
   }

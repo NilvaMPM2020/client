@@ -78,7 +78,7 @@ class CustomButtomNavigationState extends State<CustomButtomNavigation> {
   Widget _navItem(itemIndex, icon, title) {
     bool isActive = itemIndex == currentIndex;
     return isActive
-        ? MyStatefulWidget(
+        ? AnimatedNavigationItem(
             isActive: isActive,
             title: title,
             icon: icon,
@@ -99,59 +99,23 @@ class CustomButtomNavigationState extends State<CustomButtomNavigation> {
             },
           );
   }
-// Widget _navItem(itemIndex, icon, title) => GestureDetector(
-//     onTap: () {
-//       setState(() {
-//         currentIndex = itemIndex;
-//       });
-//     },
-//     child: Container(
-//       alignment: Alignment.center,
-//       constraints: BoxConstraints.expand(
-//           height: (itemIndex == currentIndex ? 100 : 80), width: 80),
-//       decoration: BoxDecoration(
-//         color: (itemIndex == currentIndex
-//             ? IColors.themeColor
-//             : Colors.transparent),
-//         borderRadius: BorderRadius.only(
-//             topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-//       ),
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: [
-//           SvgPicture.asset(
-//             icon,
-//             color: _getItemColor(itemIndex),
-//             width: 30,
-//           ),
-//           itemIndex == currentIndex
-//               ? Text(
-//                   title,
-//                   style: TextStyle(color: _getItemColor(itemIndex)),
-//                 )
-//               : Container()
-//         ],
-//       ),
-//     ));
 }
 
-/// This is the stateful widget that the main application instantiates.
-class MyStatefulWidget extends StatefulWidget {
+class AnimatedNavigationItem extends StatefulWidget {
   Function onTap;
   bool isActive;
   String icon;
   String title;
 
-  MyStatefulWidget({Key key, this.onTap, this.isActive, this.icon, this.title})
+  AnimatedNavigationItem(
+      {Key key, this.onTap, this.isActive, this.icon, this.title})
       : super(key: key);
 
   @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+  _AnimatedNavigationItemState createState() => _AnimatedNavigationItemState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
-/// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
-class _MyStatefulWidgetState extends State<MyStatefulWidget>
+class _AnimatedNavigationItemState extends State<AnimatedNavigationItem>
     with TickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> _animation;

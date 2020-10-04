@@ -3,6 +3,7 @@ import 'package:asoude/constants/colors.dart';
 import 'package:asoude/screen/client/judge/JudgeItem.dart';
 import 'package:asoude/screen/CreateServicePage.dart';
 import 'package:asoude/screen/MyTradesPage.dart';
+import 'package:asoude/screen/client/judge/JudgePage.dart';
 import 'package:asoude/screen/profile/ProfilePage.dart';
 import 'package:asoude/widget/CustomButtomNavigation.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
   _getWidgetOptions() => [
         ProfilePage(),
         CreateServicePage(),
-        MyTradesPage(),
+        JudgePage(),
         Container(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
