@@ -1,4 +1,3 @@
-
 class User {
   String username;
   String name;
@@ -7,15 +6,17 @@ class User {
   String phone;
   String email;
   int userType;
+  int tradeCount;
 
   User(
       {this.username,
-        this.name,
-        this.avatar,
-        this.rate,
-        this.phone,
-        this.email,
-        this.userType});
+      this.name,
+      this.avatar,
+      this.rate,
+      this.phone,
+      this.email,
+      this.userType,
+      this.tradeCount});
 
   User.fromJson(Map<String, dynamic> json) {
     username = json['username'];
@@ -25,6 +26,7 @@ class User {
     phone = json['phone'];
     email = json['email'];
     userType = json['user_type'];
+    tradeCount = json['trade_count'];
   }
 
   Map<String, dynamic> toJson() {
@@ -36,6 +38,7 @@ class User {
     data['phone'] = this.phone;
     data['email'] = this.email;
     data['user_type'] = this.userType;
+    data['trade_count'] = this.tradeCount;
     return data;
   }
 }

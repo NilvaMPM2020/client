@@ -3,10 +3,14 @@ import 'package:asoude/repository/ProfileRepository.dart';
 import 'package:bloc/bloc.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
+  User initialUser;
+
+  ProfileBloc({this.initialUser});
+
   ProfileRepository _repository = ProfileRepository();
 
   @override
-  ProfileState get initialState => ProfileUnloaded();
+  ProfileState get initialState => ProfileUnloaded(user: initialUser);
 
   Stream<ProfileState> _getProfile(ProfileGet event) async* {
     User user = state.user;

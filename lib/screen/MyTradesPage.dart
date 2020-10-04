@@ -42,11 +42,13 @@ class _MyTradesPageState extends State<MyTradesPage> {
     return ListView.builder(
       itemCount: trades.length,
       itemBuilder: (context, index) {
+        if (trades[index].service == null)
+          return Container();
         return TradeWidget(
-          avatar: trades[index].service.avatar,
+          avatar: trades[index].service?.avatar,
           fullName: trades[index].parties[0].name,
-          tradeName: trades[index].service.name,
-          tradeDesc: trades[index].service.description,
+          tradeName: trades[index].service?.name,
+          tradeDesc: trades[index].service?.description,
           tradePrice: trades[index].steps[0].gotStock,
           date: normalizeDateAndTime(trades[index].steps[0].createdDate),
           tradesCount: 54,

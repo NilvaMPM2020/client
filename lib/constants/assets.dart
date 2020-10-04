@@ -21,6 +21,7 @@ class Assets {
 
   static final String payIcon = "assets/pay_icon.svg";
   static final String checkboxIcon = "assets/checkbox.svg";
+  static final String loadingGif = "assets/loading.gif";
 
 
 

@@ -94,12 +94,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getWidgetOptions() => [
-
-        MyTradesPage(),
+        ProfilePage(),
         CreateServicePage(),
-        Text(
-          'Index 2: School',
-        ),
+        MyTradesPage(),
         Container(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

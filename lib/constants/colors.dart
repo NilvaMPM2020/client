@@ -34,7 +34,7 @@ class IColors {
   static Color whiteGrey = Color.fromRGBO(245, 245, 245, 1);
   static Color transparentGrey = Color.fromRGBO(10, 10, 10, 1);
   static Color darkGrey = Color.fromRGBO(144, 144, 144, 1);
-  static const Color deactivePanelMenu = Colors.black38;
+  static const Color deactivePanelMenu = Colors.black12;
   static const Color activePanelMenu = Colors.black54;
 
   static const Color trackingVisitPending = Color.fromRGBO(242, 51, 51, 1);
