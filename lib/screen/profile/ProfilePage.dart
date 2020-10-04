@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:asoude/bloc/ProfileBloc.dart';
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/model/User.dart';
-import 'package:asoude/utils/Utils.dart';
 import 'package:asoude/widget/APICallLoading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +43,6 @@ class _ProfilePageState extends State<ProfilePage> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _sub.cancel();
     super.dispose();
   }
 
