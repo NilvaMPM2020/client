@@ -73,6 +73,13 @@ class _ProfilePageState extends State<ProfilePage> with WidgetsBindingObserver {
             )));
   }
 
+  Widget _ProfileView(width) => Container(
+    constraints: BoxConstraints.expand(width: width, height: width * 3/4),
+    decoration: BoxDecoration(
+      borderRadius:
+    ),
+  );
+
   _supportWidget() =>
       GestureDetector(
         child: Padding(

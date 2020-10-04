@@ -11,7 +11,7 @@ class ActionButton extends StatefulWidget {
   final ActionCallBack callBack;
   final bool rtl;
 
-  ActionButton(
+    ActionButton(
       {Key key, this.width, this.color, this.textColor, this.title, this.icon, this.callBack, this.rtl})
       : super(key: key);
 
@@ -31,7 +31,7 @@ class _ActionButtonState extends State<ActionButton> {
             borderRadius: new BorderRadius.circular(25.0),
             side: BorderSide(color: widget.color)),
         label: Padding(
-          padding: EdgeInsets.only(bottom: 10.0, top: 10.0, right: 10.0),
+          padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
           child: Text(
             widget.title != null ? widget.title : "",
             style: TextStyle(fontSize: 16, color: widget.textColor),

@@ -31,6 +31,7 @@ class IColors {
   static Color doctorChatText = Colors.black;
   static Color selfChatText = Colors.white;
   static Color grey = Color.fromRGBO(245, 245, 245, 1);
+  static Color whiteGrey = Color.fromRGBO(245, 245, 245, 1);
   static Color transparentGrey = Color.fromRGBO(10, 10, 10, 1);
   static Color darkGrey = Color.fromRGBO(144, 144, 144, 1);
   static const Color deactivePanelMenu = Colors.black38;
