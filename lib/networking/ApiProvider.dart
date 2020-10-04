@@ -70,7 +70,7 @@ class ApiProvider {
       final prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token');
       if (token != null && token.isNotEmpty) {
-        headers.addAll({HttpHeaders.authorizationHeader: "JWT " + token});
+        headers.addAll({HttpHeaders.authorizationHeader: "Token " + token});
       }
     }
     return headers;

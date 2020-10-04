@@ -1,5 +1,6 @@
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/colors.dart';
+import 'package:asoude/screen/MyTradesPage.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
 import 'package:asoude/widget/TradeWidget.dart';
 import 'package:flutter/cupertino.dart';
@@ -90,18 +91,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getWidgetOptions() => [
-         Container(
-           width: MediaQuery.of(context).size.width*0.8,
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               TradeWidget(fullName: "حسین خطیری", tradeName: "موبایل آیفون", tradesCount: 23, date: "۱۳۹۹/۰۵/۲۳", tradePrice: "۲۳۰,۰۰۰", tradeDesc: "توضیحات",),
-             ],
-           ),
-         ),
-        Text(
-          'Index 1: Business',
+        TradeWidget(
+          fullName: "حسین خطیری",
+          tradeName: "موبایل آیفون",
+          tradesCount: 23,
+          date: "۱۳۹۹/۰۵/۲۳",
+          tradePrice: "۲۳۰,۰۰۰",
+          tradeDesc: "توضیحات",
         ),
+        MyTradesPage(),
         Text(
           'Index 2: School',
         ),

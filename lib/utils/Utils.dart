@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 
+import 'package:shamsi_date/shamsi_date.dart';
+
 enum WeekDay { SATURDAY, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY }
 
 extension WeekDaysExtension on WeekDay {
@@ -28,6 +30,18 @@ extension WeekDaysExtension on WeekDay {
     }
   }
 }
+
+String normalizeDateAndTime(String str) {
+  String date = str.split("T")[0];
+  String time = str.split("T")[1].split("+")[0];
+  final jalaliDate = Jalali.fromDateTime(DateTime(
+      int.parse(date.split("-")[0]),
+      int.parse(date.split("-")[1]),
+      int.parse(date.split("-")[2])));
+  String finalDate = "${jalaliDate.year}/${jalaliDate.month}/${jalaliDate.day}";
+  return finalDate;
+}
+
 String replaceFarsiNumber(String input) {
   const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const farsi = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
