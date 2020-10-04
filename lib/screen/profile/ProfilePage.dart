@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:asoude/bloc/ProfileBloc.dart';
@@ -43,6 +44,7 @@ class _ProfilePageState extends State<ProfilePage> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _sub.cancel();
     super.dispose();
   }
 

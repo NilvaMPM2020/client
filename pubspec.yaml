@@ -39,6 +39,8 @@ dependencies:
   introduction_screen: ^1.0.7
   flutter_rating_bar: ^3.0.1+1
   shamsi_date: ^0.7.0
+  fluttertoast: ^7.1.1
+  clipboard_manager: ^0.0.4
 
 
 dev_dependencies:

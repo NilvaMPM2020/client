@@ -70,24 +70,12 @@ class _TradeWidgetState extends State<TradeWidget> {
           textDirection: TextDirection.rtl,
           children: [
             Text("مبلغ"),
-            Text(widget.tradePrice),
+            Text(replaceFarsiNumber(widget.tradePrice)),
             Text("ریال")
           ],
         ),
       );
 
-  _tradeCostWidget2() => Container(
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: IColors.themeColor,
-          boxShadow: [
-            BoxShadow(color: Colors.grey, offset: Offset(1, 3), blurRadius: 10)
-          ]),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        textDirection: TextDirection.rtl,
-        children: [Icon(Icons.payment), Text(widget.tradeName), Text("ریال")],
-      ));
 
   _tradeDetailWidget() => Container(
       width: MediaQuery.of(context).size.width * 0.65,
@@ -154,7 +142,7 @@ class _TradeWidgetState extends State<TradeWidget> {
   _headerRateWidget() => Column(
         children: [
           Row(children: _starsWidget()),
-          Text(widget.date,
+          Text(replaceFarsiNumber(widget.date),
               style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
