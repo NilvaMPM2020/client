@@ -1,3 +1,5 @@
+import 'package:asoude/model/User.dart';
+
 class LoginResponseEntity {
   final int code;
 
@@ -23,10 +25,9 @@ class VerifyResponseEntity {
   VerifyResponseEntity({this.token, this.user});
 
   factory VerifyResponseEntity.fromJson(Map<String, dynamic> json) {
-    return  VerifyResponseEntity(
-        token : json['token'],
-        user : json['user'] != null ? new User.fromJson(json['user']) : null
-    );
+    return VerifyResponseEntity(
+        token: json['token'],
+        user: json['user'] != null ? new User.fromJson(json['user']) : null);
   }
 
   Map<String, dynamic> toJson() {
@@ -35,49 +36,6 @@ class VerifyResponseEntity {
     if (this.user != null) {
       data['user'] = this.user.toJson();
     }
-    return data;
-  }
-
-}
-
-
-class User {
-  String username;
-  String name;
-  String avatar;
-  double rate;
-  String phone;
-  String email;
-  int userType;
-
-  User(
-      {this.username,
-        this.name,
-        this.avatar,
-        this.rate,
-        this.phone,
-        this.email,
-        this.userType});
-
-  User.fromJson(Map<String, dynamic> json) {
-    username = json['username'];
-    name = json['name'];
-    avatar = json['avatar'];
-    rate = json['rate'];
-    phone = json['phone'];
-    email = json['email'];
-    userType = json['user_type'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['username'] = this.username;
-    data['name'] = this.name;
-    data['avatar'] = this.avatar;
-    data['rate'] = this.rate;
-    data['phone'] = this.phone;
-    data['email'] = this.email;
-    data['user_type'] = this.userType;
     return data;
   }
 }

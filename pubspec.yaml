@@ -39,6 +39,8 @@ dependencies:
   shamsi_date: ^0.7.0
 
 
+  polygon_clipper: ^1.0.2
+
 
 dev_dependencies:
   flutter_test:
