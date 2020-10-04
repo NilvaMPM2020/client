@@ -36,7 +36,6 @@ dependencies:
   flutter_svg: ^0.18.0
   dio: ">=3.0.0"
   polygon_clipper: ^1.0.2
-
   introduction_screen: ^1.0.7
   adobe_xd: ^1.0.0+1
 
