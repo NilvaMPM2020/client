@@ -1,3 +1,4 @@
+import 'package:asoude/screen/IntroPage.dart';
 import 'package:asoude/screen/start/StartPage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'iransans',
       ),
-      home: StartPage(),
+      home: IntroPage(),
     );
   }
 }

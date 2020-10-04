@@ -19,6 +19,9 @@ class Assets {
   static final String mameleLogo = "assets/mamele_logo.png";
 
 
+  static final String payIcon = "assets/pay_icon.svg";
+
+
 
 
 //  static String docupIcon = docupPatientIcon;
