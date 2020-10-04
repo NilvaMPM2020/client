@@ -1,5 +1,6 @@
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/colors.dart';
+import 'package:asoude/screen/client/judge/JudgeItem.dart';
 import 'package:asoude/screen/profile/ProfilePage.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
 import 'package:asoude/widget/TradeWidget.dart';
@@ -101,9 +102,7 @@ class _HomePageState extends State<HomePage> {
              ],
            ),
          ),
-        Text(
-          'Index 2: School',
-        ),
+        JudgeItem(),
         Container(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

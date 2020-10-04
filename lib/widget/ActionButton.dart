@@ -11,7 +11,7 @@ class ActionButton extends StatefulWidget {
   final ActionCallBack callBack;
   final bool rtl;
 
-  ActionButton(
+    ActionButton(
       {Key key, this.width, this.color, this.textColor, this.title, this.icon, this.callBack, this.rtl})
       : super(key: key);
 
