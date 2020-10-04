@@ -11,6 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
+  final bool isUser;
+
+  HomePage({this.isUser});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -94,11 +98,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getWidgetOptions() => [
-
         MyTradesPage(),
-    Text(
-      'Index 2: School',
-    ),
+        Text(
+          'Index 2: School',
+        ),
         Text(
           'Index 2: School',
         ),
@@ -118,28 +121,75 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 40,
             ),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => CreateServicePage()));
-              },
-              child: _serviceButtonWidget(
-                  "ایجاد معامله",
-                  "معامله خود را ایجاد کنید",
-                  Assets.dealReqIcon,
-                  Color.fromRGBO(32, 167, 202, 1),
-                  Color.fromRGBO(34, 197, 185, 1)),
-            ),
+            _landingPageFirstItem(),
             SizedBox(height: 20),
-            _serviceButtonWidget(
-                "درخواست‌های معامله",
-                "قبول یا رد درخواست‌های معامله",
-                Assets.addDealIcon,
-                Color.fromRGBO(254, 187, 1, 1),
-                Color.fromRGBO(255, 164, 72, 1)),
+            _landingPageSecondItem(),
           ],
         )),
       ];
+
+  Widget _landingPageSecondItem() {
+    if (widget.isUser) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            _currentIndex = 1;
+          });
+        },
+        child: _serviceButtonWidget(
+            "معاملات من",
+            "معامله‌های اخیر خود را رصد کنید",
+            Assets.addDealIcon,
+            Color.fromRGBO(254, 187, 1, 1),
+            Color.fromRGBO(255, 164, 72, 1)),
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            _currentIndex = 1;
+          });
+        },
+        child: _serviceButtonWidget(
+            "معامله‌های من",
+            "معامله‌های اخیر خود را رصد کنید",
+            Assets.addDealIcon,
+            Color.fromRGBO(254, 187, 1, 1),
+            Color.fromRGBO(255, 164, 72, 1)),
+      );
+    }
+  }
+
+  Widget _landingPageFirstItem() {
+    if (widget.isUser) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            _currentIndex = 2;
+          });
+        },
+        child: _serviceButtonWidget(
+            "داوری",
+            "در داوری معامله‌ها کمک کن",
+            Assets.dealIcon,
+            Color.fromRGBO(32, 167, 202, 1),
+            Color.fromRGBO(34, 197, 185, 1)),
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CreateServicePage()));
+        },
+        child: _serviceButtonWidget(
+            "ایجاد معامله",
+            "معامله خود را ایجاد کنید",
+            Assets.dealReqIcon,
+            Color.fromRGBO(32, 167, 202, 1),
+            Color.fromRGBO(34, 197, 185, 1)),
+      );
+    }
+  }
 
   Widget _serviceButtonWidget(String title, String subTitle, String asset,
           Color fColor, Color sColor) =>

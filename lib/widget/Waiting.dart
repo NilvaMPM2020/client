@@ -1,4 +1,6 @@
 
+import 'package:asoude/constants/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Waiting extends StatelessWidget {
@@ -8,10 +10,8 @@ class Waiting extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(
-            "assets/loading.gif",
-            width: 70,
-            height: 70,
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(IColors.themeColor),
           ),
           SizedBox(
             width: 10,

@@ -89,7 +89,7 @@ class _StartPageState extends State<StartPage> {
       bool isUser = prefs.getBool("isUser");
       switchRole(isUser ? RoleType.USER : RoleType.COMPANY);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomePage(isUser: isUser)));
     }
   }
 
@@ -118,7 +118,7 @@ class _StartPageState extends State<StartPage> {
     _authBloc.verifyStream.listen((data) {
       if (handle(data)) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => HomePage(isUser: currentRoleType == RoleType.USER)));
       }
     });
 
