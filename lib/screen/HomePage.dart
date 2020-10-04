@@ -96,7 +96,9 @@ class _HomePageState extends State<HomePage> {
   _getWidgetOptions() => [
 
         MyTradesPage(),
-        CreateServicePage(),
+    Text(
+      'Index 2: School',
+    ),
         Text(
           'Index 2: School',
         ),
@@ -116,12 +118,18 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 40,
             ),
-            _serviceButtonWidget(
-                "ایجاد معامله",
-                "معامله خود را ایجاد کنید",
-                Assets.dealReqIcon,
-                Color.fromRGBO(32, 167, 202, 1),
-                Color.fromRGBO(34, 197, 185, 1)),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => CreateServicePage()));
+              },
+              child: _serviceButtonWidget(
+                  "ایجاد معامله",
+                  "معامله خود را ایجاد کنید",
+                  Assets.dealReqIcon,
+                  Color.fromRGBO(32, 167, 202, 1),
+                  Color.fromRGBO(34, 197, 185, 1)),
+            ),
             SizedBox(height: 20),
             _serviceButtonWidget(
                 "درخواست‌های معامله",
