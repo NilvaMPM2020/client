@@ -2,6 +2,7 @@ import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/colors.dart';
 import 'package:asoude/screen/profile/ProfilePage.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
+import 'package:asoude/widget/TradeWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -91,9 +92,15 @@ class _HomePageState extends State<HomePage> {
 
   _getWidgetOptions() => [
         ProfilePage(),
-        Text(
-          'Index 1: Business',
-        ),
+         Container(
+           width: MediaQuery.of(context).size.width*0.8,
+           child: Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               TradeWidget(fullName: "حسین خطیری", tradeName: "موبایل آیفون", tradesCount: 23, date: "۱۳۹۹/۰۵/۲۳", tradePrice: "۲۳۰,۰۰۰", tradeDesc: "توضیحات",),
+             ],
+           ),
+         ),
         Text(
           'Index 2: School',
         ),
@@ -116,14 +123,14 @@ class _HomePageState extends State<HomePage> {
             _serviceButtonWidget(
                 "ایجاد معامله",
                 "معامله خود را ایجاد کنید",
-                Assets.addDealIcon,
+                Assets.dealReqIcon,
                 Color.fromRGBO(32, 167, 202, 1),
                 Color.fromRGBO(34, 197, 185, 1)),
             SizedBox(height: 20),
             _serviceButtonWidget(
                 "درخواست‌های معامله",
                 "قبول یا رد درخواست‌های معامله",
-                Assets.dealReqIcon,
+                Assets.addDealIcon,
                 Color.fromRGBO(254, 187, 1, 1),
                 Color.fromRGBO(255, 164, 72, 1)),
           ],
@@ -134,38 +141,39 @@ class _HomePageState extends State<HomePage> {
           Color fColor, Color sColor) =>
       Center(
         child: RaisedGradientButton(
-            child: Padding(
-              padding: const EdgeInsets.only(left:24.0, right: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        title,
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        subTitle,
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(color: Colors.white60, fontSize: 14),
-                      )
-                    ],
-                  ),
-                  SvgPicture.asset(
-                    asset,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.white),
+                    ),
+                    Text(
+                      subTitle,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(color: Colors.white60, fontSize: 14),
+                    )
+                  ],
+                ),
+                SvgPicture.asset(
+                  asset,
+                  color: Colors.white,
+                ),
+              ],
             ),
-            gradient: LinearGradient(
-              colors: <Color>[fColor, sColor],
-            )),
+          ),
+          gradient: LinearGradient(
+            colors: <Color>[fColor, sColor],
+          ),
+        ),
       );
 }

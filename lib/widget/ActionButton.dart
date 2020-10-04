@@ -7,7 +7,7 @@ class ActionButton extends StatefulWidget {
   final Color color;
   final Color textColor;
   final String title;
-  final Icon icon;
+  final Widget icon;
   final ActionCallBack callBack;
   final bool rtl;
 
