@@ -4,6 +4,7 @@ import 'package:asoude/screen/client/judge/JudgeItem.dart';
 import 'package:asoude/screen/CreateServicePage.dart';
 import 'package:asoude/screen/MyTradesPage.dart';
 import 'package:asoude/screen/profile/ProfilePage.dart';
+import 'package:asoude/widget/CustomButtomNavigation.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
 import 'package:asoude/widget/TradeWidget.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,33 +22,52 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _getWidgetOptions().elementAt(_currentIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _bottomNavItem(Assets.menuIcon, 0),
-            title: Text("حساب کاربری",
-                style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: _bottomNavItem(Assets.dealIcon, 1),
-            title: Text("معامله‌های من",
-                style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: _bottomNavItem(Assets.lawIcon, 2),
-            title: Text("داوری", style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: _bottomNavItem(Assets.homeIcon, 3),
-            title: Text("خانه", style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-        ],
-        currentIndex: _currentIndex,
-        selectedItemColor: IColors.themeColor,
-        onTap: _onItemTapped,
-      ),
-    );
+        body: CustomButtomNavigation(children: [
+      NavigationItem(
+          widget: _getWidgetOptions()[0],
+          title: 'item 1',
+          icon: Assets.menuIcon),
+      NavigationItem(
+          widget: _getWidgetOptions()[1],
+          title: 'item 2',
+          icon: Assets.dealIcon),
+      NavigationItem(
+          widget: _getWidgetOptions()[2],
+          title: 'item 2',
+          icon: Assets.lawIcon),
+      NavigationItem(
+          widget: _getWidgetOptions()[3],
+          title: 'item 2',
+          icon: Assets.homeIcon),
+    ], index: 1));
+    //   Scaffold(
+    //   body: _getWidgetOptions().elementAt(_currentIndex),
+    //   bottomNavigationBar: BottomNavigationBar(
+    //     items: <BottomNavigationBarItem>[
+    //       BottomNavigationBarItem(
+    //         icon: _bottomNavItem(Assets.menuIcon, 0),
+    //         title: Text("حساب کاربری",
+    //             style: TextStyle(fontWeight: FontWeight.bold)),
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: _bottomNavItem(Assets.dealIcon, 1),
+    //         title: Text("معامله‌های من",
+    //             style: TextStyle(fontWeight: FontWeight.bold)),
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: _bottomNavItem(Assets.lawIcon, 2),
+    //         title: Text("داوری", style: TextStyle(fontWeight: FontWeight.bold)),
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: _bottomNavItem(Assets.homeIcon, 3),
+    //         title: Text("خانه", style: TextStyle(fontWeight: FontWeight.bold)),
+    //       ),
+    //     ],
+    //     currentIndex: _currentIndex,
+    //     selectedItemColor: IColors.themeColor,
+    //     onTap: _onItemTapped,
+    //   ),
+    // );
   }
 
   Container _bottomNavItem(String asset, int index) => Container(

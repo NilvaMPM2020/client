@@ -113,8 +113,7 @@ class _ProfilePageState extends State<ProfilePage> with WidgetsBindingObserver {
       });
 
   Widget _keyValue(Widget icon, value, width, {underlined = true}) => Container(
-      margin: EdgeInsets.only(
-          top: 15, bottom: underlined ? 15 : 15, right: underlined ? 0 : 10),
+      margin: EdgeInsets.only(top: 15, bottom: underlined ? 15 : 15),
       child: Column(children: [
         Container(
           margin: EdgeInsets.only(right: width * .1),
