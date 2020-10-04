@@ -317,9 +317,14 @@ class _CreateServicePage extends State<CreateServicePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _currentStep = 0;
-                    });
+                    if(_currentStep == 0) {
+                      Navigator.of(context).pop();
+                    } else {
+                      setState(() {
+                        _currentStep = 0;
+                      });
+                    }
+
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.3,

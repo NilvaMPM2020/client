@@ -7,7 +7,7 @@ class TradeRepository {
   ApiProvider _provider = ApiProvider();
 
   Future<List<TradeResponseEntity>> getTradeList() async {
-    final response = await _provider.get("trade/trades");
+    final response = await _provider.get("trade/trades", utf8Support: true);
     return _tradesList(response);
   }
 
