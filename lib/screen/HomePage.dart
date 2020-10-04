@@ -1,5 +1,6 @@
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/colors.dart';
+import 'package:asoude/screen/profile/ProfilePage.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -89,9 +90,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getWidgetOptions() => [
-        Text(
-          'Index 0: Home',
-        ),
+        ProfilePage(),
         Text(
           'Index 1: Business',
         ),
