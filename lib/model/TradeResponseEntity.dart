@@ -97,7 +97,7 @@ class Steps {
   int duration;
   String givenStock;
   String gotStock;
-  List<Conditions> conditions;
+  List<Condition> conditions;
 
   Steps(
       {this.id,
@@ -116,9 +116,9 @@ class Steps {
     givenStock = json['given_stock'];
     gotStock = json['got_stock'];
     if (json['conditions'] != null) {
-      conditions = new List<Conditions>();
+      conditions = new List<Condition>();
       json['conditions'].forEach((v) {
-        conditions.add(new Conditions.fromJson(v));
+        conditions.add(new Condition.fromJson(v));
       });
     }
   }
@@ -138,15 +138,15 @@ class Steps {
   }
 }
 
-class Conditions {
+class Condition {
   int id;
   String title;
   String description;
   bool checked;
 
-  Conditions({this.id, this.title, this.description, this.checked});
+  Condition({this.id, this.title, this.description, this.checked});
 
-  Conditions.fromJson(Map<String, dynamic> json) {
+  Condition.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     description = json['description'];
