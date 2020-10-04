@@ -1,6 +1,8 @@
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/colors.dart';
 import 'package:asoude/screen/client/judge/JudgeItem.dart';
+import 'package:asoude/screen/CreateServicePage.dart';
+import 'package:asoude/screen/MyTradesPage.dart';
 import 'package:asoude/screen/profile/ProfilePage.dart';
 import 'package:asoude/widget/RaisedGradientButton.dart';
 import 'package:asoude/widget/TradeWidget.dart';
@@ -92,17 +94,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getWidgetOptions() => [
-        ProfilePage(),
-         Container(
-           width: MediaQuery.of(context).size.width*0.8,
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               TradeWidget(fullName: "حسین خطیری", tradeName: "موبایل آیفون", tradesCount: 23, date: "۱۳۹۹/۰۵/۲۳", tradePrice: "۲۳۰,۰۰۰", tradeDesc: "توضیحات",),
-             ],
-           ),
-         ),
-        JudgeItem(),
+
+        MyTradesPage(),
+        CreateServicePage(),
+        Text(
+          'Index 2: School',
+        ),
         Container(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -14,6 +14,7 @@ class InputField extends StatefulWidget {
   String errorMessage;
   bool obscureText;
   ValueChanged<String> onChanged;
+  bool withUnderline;
 
   InputField(
       {this.inputHint,
@@ -23,7 +24,8 @@ class InputField extends StatefulWidget {
       this.validationCallback,
       this.errorMessage,
       this.onChanged,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.withUnderline = true});
 
   @override
   _InputFieldState createState() => _InputFieldState();
@@ -38,11 +40,13 @@ class _InputFieldState extends State<InputField> {
       this.isValid = false;
     });
     super.initState();
-    widget.controller.addListener(() {
-      setState(() {
-        isValid = widget.validationCallback(widget.controller.text);
+    if(widget.controller != null) {
+      widget.controller.addListener(() {
+        setState(() {
+          isValid = widget.validationCallback(widget.controller.text);
+        });
       });
-    });
+    }
   }
 
   @override
@@ -70,13 +74,13 @@ class _InputFieldState extends State<InputField> {
       },
       decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: IColors.themeColor, width: 2),
+            borderSide: widget.withUnderline ? BorderSide(color: IColors.themeColor, width: 2) : BorderSide(color: Colors.transparent, width: 2),
           ),
           focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: IColors.themeColor, width: 2),
+            borderSide: widget.withUnderline ? BorderSide(color: IColors.themeColor, width: 2) : BorderSide(color: Colors.transparent, width: 2),
           ),
           border: UnderlineInputBorder(
-            borderSide: BorderSide(color: IColors.themeColor, width: 2),
+            borderSide: widget.withUnderline ? BorderSide(color: IColors.themeColor, width: 2) : BorderSide(color: Colors.transparent, width: 2),
           ),
           prefixIcon: Visibility(
               visible: isValid,

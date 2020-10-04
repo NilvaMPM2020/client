@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TradeWidget extends StatefulWidget {
+  final String avatar;
   final String fullName;
   final int tradesCount;
   final String date;
@@ -15,7 +16,8 @@ class TradeWidget extends StatefulWidget {
   final String tradePrice;
 
   TradeWidget(
-      {this.fullName,
+      {this.avatar,
+        this.fullName,
       this.tradeName,
       this.tradesCount,
       this.date,
@@ -177,7 +179,7 @@ class _TradeWidgetState extends State<TradeWidget> {
 
   CircleAvatar _headerAvatarWidget() {
     return CircleAvatar(
-      backgroundImage: AssetImage(Assets.mameleLogo),
+      backgroundImage: widget.avatar == null ? AssetImage(Assets.mameleLogo) :NetworkImage(widget.avatar),
     );
   }
 }
