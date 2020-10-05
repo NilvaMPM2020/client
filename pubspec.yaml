@@ -38,10 +38,16 @@ dependencies:
   polygon_clipper: ^1.0.2
   introduction_screen: ^1.0.7
   flutter_rating_bar: ^3.0.1+1
+  flutter_launcher_icons: ">=0.6.1"
   shamsi_date: ^0.7.0
   fluttertoast: ^7.1.1
   clipboard_manager: ^0.0.4
 
+
+flutter_icons:
+  image_path: "assets/mamele_logo.png"
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:

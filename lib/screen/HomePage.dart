@@ -30,20 +30,23 @@ class _HomePageState extends State<HomePage> {
         body: CustomButtomNavigation(children: [
       NavigationItem(
           widget: _getWidgetOptions()[0],
-          title: 'item 1',
+          title: 'حساب کاربری',
           icon: Assets.menuIcon),
       NavigationItem(
-          widget: _getWidgetOptions()[1],
-          title: 'item 2',
+          widget: _getWidgetOptions()[4],
+          title: 'معامله‌های من',
           icon: Assets.dealIcon),
+      widget.isUser
+          ? NavigationItem(
+              widget: _getWidgetOptions()[2],
+              title: 'داوری',
+              icon: Assets.lawIcon)
+          : NavigationItem(
+              widget: _getWidgetOptions()[4],
+              title: 'محصولات من',
+              icon: Assets.lawIcon),
       NavigationItem(
-          widget: _getWidgetOptions()[2],
-          title: 'item 2',
-          icon: Assets.lawIcon),
-      NavigationItem(
-          widget: _getWidgetOptions()[3],
-          title: 'item 2',
-          icon: Assets.homeIcon),
+          widget: _getWidgetOptions()[3], title: 'خانه', icon: Assets.homeIcon),
     ], index: 1));
     //   Scaffold(
     //   body: _getWidgetOptions().elementAt(_currentIndex),
@@ -143,6 +146,7 @@ class _HomePageState extends State<HomePage> {
             _landingPageSecondItem(),
           ],
         )),
+        MyTradesPage(),
       ];
 
   Widget _landingPageSecondItem() {

@@ -21,7 +21,6 @@ import 'package:asoude/networking/Response.dart';
 import 'RoleType.dart';
 import 'package:rxdart/rxdart.dart';
 
-
 enum StartType { SIGN_UP, LOGIN }
 
 class StartPage extends StatefulWidget {
@@ -88,8 +87,8 @@ class _StartPageState extends State<StartPage> {
     if (prefs.containsKey("token")) {
       bool isUser = prefs.getBool("isUser");
       switchRole(isUser ? RoleType.USER : RoleType.COMPANY);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage(isUser: isUser)));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomePage(isUser: isUser)));
     }
   }
 
@@ -118,7 +117,10 @@ class _StartPageState extends State<StartPage> {
     _authBloc.verifyStream.listen((data) {
       if (handle(data)) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage(isUser: currentRoleType == RoleType.USER)));
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    HomePage(isUser: currentRoleType == RoleType.USER)));
       }
     });
 
@@ -144,7 +146,7 @@ class _StartPageState extends State<StartPage> {
 
   void submit({bool resend}) {
     if (_formKey.currentState.validate()) {
-      if(_phoneNumberController.text.isNotEmpty){
+      if (_phoneNumberController.text.isNotEmpty) {
         currentPhoneNumber = _phoneNumberController.text;
       }
       _phoneNumberController.text = "";
@@ -155,10 +157,11 @@ class _StartPageState extends State<StartPage> {
             break;
           case StartType.LOGIN:
             if (resend != null && resend) {
-                _authBloc.login(currentPhoneNumber);
+              _authBloc.login(currentPhoneNumber);
               resetTimer();
             } else {
-              _authBloc.verify(currentPhoneNumber, currentRoleType, int.parse(_verificationController.text));
+              _authBloc.verify(currentPhoneNumber, currentRoleType,
+                  int.parse(_verificationController.text));
             }
             break;
         }
@@ -318,7 +321,9 @@ class _StartPageState extends State<StartPage> {
       );
 
   _messageWidget() => Text(
-        startType == StartType.SIGN_UP ? "با مامله مطمئن و ساده پرداخت کنید" : "کد ارسال شده به ایمیل یا شماره همراه خود را\n وارد کنید",
+        startType == StartType.SIGN_UP
+            ? "با مامله مطمئن و ساده پرداخت کنید"
+            : "کد ارسال شده به ایمیل یا شماره همراه خود را\n وارد کنید",
         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       );
@@ -354,7 +359,7 @@ class _StartPageState extends State<StartPage> {
           textInputType: TextInputType.phone,
           validationCallback: (text) => validatePhoneNumber(text),
           errorMessage: "شماره همراه معتبر نیست",
-          onChanged: (text){},
+          onChanged: (text) {},
         );
       case StartType.LOGIN:
         return InputField(
@@ -371,5 +376,4 @@ class _StartPageState extends State<StartPage> {
             });
     }
   }
-
 }

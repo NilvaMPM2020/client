@@ -1,6 +1,7 @@
 class Strings {
   static const String tradeShouldResume = 'معامله باید انجام شود';
   static const String tradeShouldCancel = 'معامله مشکل دارد';
+  static const String noJudgmentItemFound = 'موردی یافت نشد';
 
   static const String appTitle = 'Flutter Demo';
   static const String bottomNavigationHomeTitle = 'خانه';

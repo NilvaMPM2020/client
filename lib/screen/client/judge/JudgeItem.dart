@@ -1,9 +1,14 @@
+import 'package:asoude/bloc/JudgeBloc.dart';
 import 'package:asoude/constants/assets.dart';
 import 'package:asoude/constants/strings.dart';
+import 'package:asoude/model/JudgeResponseEntity.dart';
+import 'package:asoude/utils/Utils.dart';
+import 'package:asoude/widget/APICallLoading.dart';
 import 'package:asoude/widget/ActionButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:asoude/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class JudgeItem extends StatefulWidget {
@@ -14,7 +19,15 @@ class JudgeItem extends StatefulWidget {
 }
 
 class JudgeItemState extends State<JudgeItem> {
-  Widget _condition(Condition condition) => Container(
+  JudgeBloc _judgeBloc = JudgeBloc();
+
+  @override
+  initState() {
+    _judgeBloc.add(JudgeGet());
+    super.initState();
+  }
+
+  Widget _condition(Conditions condition) => Container(
         margin: EdgeInsets.only(top: 5, bottom: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -32,7 +45,7 @@ class JudgeItemState extends State<JudgeItem> {
         ),
       );
 
-  Widget _description(String description, List<Condition> conditions,
+  Widget _description(String description, List<Conditions> conditions,
           {width}) =>
       Container(
           constraints:
@@ -50,7 +63,7 @@ class JudgeItemState extends State<JudgeItem> {
                 child: Column(
                   children: [
                     Text(
-                      description,
+                      description == null? '': description,
                       textAlign: TextAlign.right,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
@@ -61,7 +74,9 @@ class JudgeItemState extends State<JudgeItem> {
                       flex: 2,
                       child: ListView(
                         // crossAxisAlignment: CrossAxisAlignment.end,
-                        children: conditions.map((c) => _condition(c)).toList(),
+                        children: conditions
+                            .map((c) => c == null ? Container() : _condition(c))
+                            .toList(),
                       ),
                     )
                   ],
@@ -86,7 +101,7 @@ class JudgeItemState extends State<JudgeItem> {
             ],
           ));
 
-  Widget _compare(width) {
+  Widget _compare(width, JudgeResponseEntity judge) {
     return Container(
       child: Stack(
         overflow: Overflow.visible,
@@ -98,22 +113,19 @@ class JudgeItemState extends State<JudgeItem> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _description(
-                        'پیراهن به من فروخته پارست',
-                        [
-                          Condition(title: 'a', checked: true),
-                          Condition(title: 'b', checked: false),
-                          Condition(title: 'b', checked: false),
-                          Condition(title: 'b', checked: false),
-                          Condition(title: 'b', checked: false),
-                          Condition(title: 'b', checked: false),
-                        ],
+                        judge.steps[0].descriptionClient,
+                        judge.steps[0].conditions
+                            .map((c) => c.checked
+                                ? Conditions(title: c.title, checked: c.checked)
+                                : null)
+                            .toList(),
                         width: width),
                     _description(
-                        'خودت پاره‌ای اگه ببینمت',
-                        [
-                          Condition(title: 'a', checked: true),
-                          Condition(title: 'b', checked: false)
-                        ],
+                        judge.steps[0].judgementDescriptionBusiness,
+                        judge.steps[0].conditions
+                            .map((c) =>
+                                Conditions(title: c.title, checked: c.checked))
+                            .toList(),
                         width: width),
                   ])),
           Align(
@@ -138,7 +150,7 @@ class JudgeItemState extends State<JudgeItem> {
     );
   }
 
-  Widget _actions() => Container(
+  Widget _actions(judgeId) => Container(
       margin: EdgeInsets.only(top: 30),
       constraints: BoxConstraints.expand(height: 200),
       child: Column(
@@ -148,7 +160,9 @@ class JudgeItemState extends State<JudgeItem> {
             color: IColors.secondary,
             rtl: true,
             width: 250,
-            callBack: () {},
+            callBack: () {
+              _judgeBloc.add(JudgeMake(judgeId: judgeId, decision: 1));
+            },
           ),
           SizedBox(
             height: 15,
@@ -158,26 +172,52 @@ class JudgeItemState extends State<JudgeItem> {
             color: IColors.primary,
             rtl: true,
             width: 250,
-            callBack: () {},
+            callBack: () {
+              _judgeBloc.add(JudgeMake(judgeId: judgeId, decision: -1));
+            },
           ),
         ],
       ));
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 50),
-      constraints: BoxConstraints.expand(height: 800),
-      child: Column(
-        children: [_compare(MediaQuery.of(context).size.width), _actions()],
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<JudgeBloc>(
+            create: (BuildContext context) => _judgeBloc,
+          ),
+        ],
+        child: BlocBuilder<JudgeBloc, JudgeState>(
+          builder: (context, state) {
+            if (state is JudgeGetLoading)
+              return Container(
+                  constraints: BoxConstraints.expand(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width),
+                  child: APICallLoading());
+            if (state is JudgeGetError) {
+              return Container(
+                  constraints: BoxConstraints.expand(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width),
+                  child: Center(
+                    child: Text(
+                      Strings.noJudgmentItemFound,
+                      style: TextStyle(color: IColors.darkGrey),
+                    ),
+                  ));
+            }
+            return Container(
+              margin: EdgeInsets.only(top: 50),
+              constraints: BoxConstraints.expand(height: 800),
+              child: Column(
+                children: [
+                  _compare(MediaQuery.of(context).size.width, state.judge),
+                  _actions(state.judge.id)
+                ],
+              ),
+            );
+          },
+        ));
   }
-}
-
-class Condition {
-  String title;
-  bool checked;
-
-  Condition({this.title, this.checked});
 }
